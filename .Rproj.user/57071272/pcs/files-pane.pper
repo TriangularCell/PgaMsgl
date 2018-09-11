@@ -1,0 +1,13 @@
+{
+    "path" : "~/Google Drive/P11.RegulatoryPattern/Code/PGA_MSGL_C/PgaMsgl/src",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        },
+        {
+            "ascending" : false,
+            "columnIndex" : 3
+        }
+    ]
+}

@@ -1,0 +1,35 @@
+[
+    {
+        "definitions" : [
+            {
+                "column" : 6,
+                "file" : "C:/Users/JW Lab user/Google Drive/P11.RegulatoryPattern/Code/PGA_MSGL_C/PgaMsgl/src/PgaMsgl.cpp",
+                "kind" : 6,
+                "line" : 18,
+                "name" : "L121(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP)",
+                "parent_name" : "",
+                "usr" : "c:@F@L121#*$@S@SEXPREC#S0_#S0_#S0_#S0_#S0_#S0_#"
+            },
+            {
+                "column" : 6,
+                "file" : "C:/Users/JW Lab user/Google Drive/P11.RegulatoryPattern/Code/PGA_MSGL_C/PgaMsgl/src/PgaMsgl.cpp",
+                "kind" : 6,
+                "line" : 121,
+                "name" : "L020v1(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP)",
+                "parent_name" : "",
+                "usr" : "c:@F@L020v1#*$@S@SEXPREC#S0_#S0_#S0_#S0_#S0_#S0_#"
+            },
+            {
+                "column" : 6,
+                "file" : "C:/Users/JW Lab user/Google Drive/P11.RegulatoryPattern/Code/PGA_MSGL_C/PgaMsgl/src/PgaMsgl.cpp",
+                "kind" : 6,
+                "line" : 229,
+                "name" : "L020v2(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, double, double, double, double)",
+                "parent_name" : "",
+                "usr" : "c:@F@L020v2#*$@S@SEXPREC#S0_#S0_#S0_#S0_#S0_#S0_#d#d#d#d#"
+            }
+        ],
+        "file" : "C:/Users/JW Lab user/Google Drive/P11.RegulatoryPattern/Code/PGA_MSGL_C/PgaMsgl/src/PgaMsgl.cpp",
+        "file_last_write" : 1536565437
+    }
+]
