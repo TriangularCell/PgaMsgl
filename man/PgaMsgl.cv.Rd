@@ -35,7 +35,7 @@ PgaMsgl.cv(XX, YY, B0, model = c("L020v1", "L020v2", "L121"), Gm, mi = 1000, mg.
 
 \item{seed}{Numeric value for \code{set.seed()} when generate test or evaluate samples for k-fold cross validation.}
 
-\item{ncores}{The number of cores to be used for parallel execution. A parameter of \code{registerDoParallel()} in \code{doParallel} package. If not specified, \code{registerDoParallel()} will take the default number of cores, which is the value of ‘options("cores")’. If the specified number is lareger than the maximum number of available cores, which is detected by \code{detectCores()}, the maximum number of available cores will be used, otherwise, the specified number of cores will be used.}
+\item{ncores}{The number of cores to use for parallel execution. A parameter of \code{registerDoMC()} in \code{doMC} package.}
 }
 \value{
 \item{rss}{A vector of the \code{residual sum of squares (RSS)} of model fitting with each combination of parameters.}

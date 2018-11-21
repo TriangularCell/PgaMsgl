@@ -10,4 +10,4 @@ License: GPL-3
 Imports: Rcpp, RcppEigen, doParallel, foreach
 LinkingTo: Rcpp, RcppEigen
 Encoding: UTF-8
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
