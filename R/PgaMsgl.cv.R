@@ -122,8 +122,8 @@ PgaMsgl.cv <- function(XX, YY, B0, model=c("L020v1", "L020v2", "L121"), Gm, mi=1
       beta <- result$Beta
       rss.temp <- norm(X.test%*%beta-Y.test,'F')^2
       RMSE.temp <- sqrt(rss.temp/(dim(Y.test)[1]*dim(Y.test)[2]))
-      Rsquare.test <- 1-rss.temp/(norm(Y.test-mean(Y.test),'F'))^2
-      list(rss.temp, RMSE.temp, Rsquare.test)
+      Rsquare.temp <- 1-rss.temp/(norm(Y.test-mean(Y.test),'F'))^2
+      list(rss.temp, RMSE.temp, Rsquare.temp)
     }
   rss.test <- cv[[1]]
   RMSE.test <- cv[[2]]
