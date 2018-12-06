@@ -13,9 +13,9 @@ FitEva(Beta.simulate, Beta.fit, Gm, cutoff.sc, cutoff.g)
 
 \item{Gm}{Matrix of the group structure of coefficient matrix \code{B}. It is the a matrix of group boundaries, with each row indicating a group, four columns indicate the row-start, row-end, column-start and column-end of the group. The row/column index is 1-based.}
 
-\item{cutoff.sc}{A number indicates the cutoff of a single coefficient in \code{B} to be true positive.}
+\item{cutoff.sc}{A non-negative number indicates the cutoff of a single coefficient in \code{B} to be positive in the fitted \code{B} matrix.}
 
-\item{cutoff.g}{A number indicates the cutoff of the norm of a group (a sub-matrix in truth) in \code{B} to be true positive.}
+\item{cutoff.g}{A non-negative number indicates the cutoff of the norm of a group (a sub-matrix in truth) in the fitted \code{B} matrix to be positive.}
 }
 \value{
 \item{sc.TPR}{The true positive rate of single coefficients prediction.}
