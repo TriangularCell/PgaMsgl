@@ -7,11 +7,11 @@
 PgaMsgl.cv(XX, YY, B0, model = c("L020v1", "L020v2", "L121"), Gm, mi = 1000, mg.v, mc.v, minlambda = 1e-5, rlambda = 0.98, mintau = 1e-5, rtau = 0.98, fold = 5, seed = 1, ncores)
 }
 \arguments{
-\item{XX}{Matrix \code{X} in the model \code{Y=XB}.}
+\item{XX}{Matrix \code{X} in the model \code{Y=XB}. Remember to use \code{as.matrix()} if your input is a data frame.}
 
-\item{YY}{Matrix \code{Y} in the model \code{Y=XB}.}
+\item{YY}{Matrix \code{Y} in the model \code{Y=XB}. Remember to use \code{as.matrix()} if your input is a data frame.}
 
-\item{B0}{Initial matrix of the coefficient matrix \code{B} in the model \code{Y=XB}.}
+\item{B0}{Initial matrix of the coefficient matrix \code{B} in the model \code{Y=XB}. Remember to use \code{as.matrix()} if your input is a data frame.}
 
 \item{model}{The model for Sparse Group Lasso, \code{L121}, \code{L020v1}, or \code{L020v2}.}
 

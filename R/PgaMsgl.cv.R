@@ -4,9 +4,9 @@
 #' 
 #' @usage PgaMsgl.cv(XX, YY, B0, model = c("L020v1", "L020v2", "L121"), Gm, mi = 1000, mg.v, mc.v, minlambda = 1e-5, rlambda = 0.98, mintau = 1e-5, rtau = 0.98, fold = 5, seed = 1, ncores)
 #' 
-#' @param XX Matrix \code{X} in the model \code{Y=XB}.
-#' @param YY Matrix \code{Y} in the model \code{Y=XB}.
-#' @param B0 Initial matrix of the coefficient matrix \code{B} in the model \code{Y=XB}.
+#' @param XX Matrix \code{X} in the model \code{Y=XB}. Remember to use \code{as.matrix()} if your input is a data frame.
+#' @param YY Matrix \code{Y} in the model \code{Y=XB}. Remember to use \code{as.matrix()} if your input is a data frame.
+#' @param B0 Initial matrix of the coefficient matrix \code{B} in the model \code{Y=XB}. Remember to use \code{as.matrix()} if your input is a data frame.
 #' @param model The model for Sparse Group Lasso, \code{L121}, \code{L020v1}, or \code{L020v2}.
 #' @param Gm Matrix of the group structure of coefficient matrix \code{B}. It is the a matrix of group boundaries, with each row indicating a group, four columns indicate the row-start, row-end, column-start and column-end of the group. The row/column index is 1-based.
 #' @param mi Maximum number of iterations allowed, default value is 1000.
@@ -55,7 +55,7 @@
 #' 
 #' @useDynLib PgaMsgl
 #' 
-#' @import Rcpp RcppEigen doParallel foreach
+#' @import Rcpp RcppEigen doParallel foreach parallel
 #' 
 #' @export
 PgaMsgl.cv <- function(XX, YY, B0, model=c("L020v1", "L020v2", "L121"), Gm, mi=1000, mg.v, mc.v, minlambda = 1e-5, rlambda = 0.98, mintau = 1e-5, rtau = 0.98, fold=5, seed=1, ncores=NULL)

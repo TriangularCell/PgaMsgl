@@ -4,7 +4,7 @@
 \alias{initialBeta}
 \title{Generate an initial Beta matrix for iteration with PgaMsgl.}
 \usage{
-initialBeta(XX, YY, method=p.adjust.methods, cutoff=p.adjust.cutoff)
+initialBeta(XX, YY, method=p.adjust.methods, cutoff=p.adjust.cutoff, ncores=ncores)
 }
 \arguments{
 \item{XX}{Matrix \code{X} in the model \code{Y=XB}.}
@@ -14,6 +14,8 @@ initialBeta(XX, YY, method=p.adjust.methods, cutoff=p.adjust.cutoff)
 \item{method}{Method for p-value adjustment, acceptable values c("holm", "hochberg", "hommel", "bonferroni", "BH", "BY", "fdr", "none"). More details see \code{\link{p.adjust}}.}
 
 \item{cutoff}{A number between 0 and 1 indicates the cutoff of adjusted p-value.}
+
+\item{ncores}{The number of cores to use for parallel execution. A parameter of \code{registerDoMC()} in \code{doMC} package.}
 }
 \value{
 \item{B0}{The initial Beta matrix generated with simple linear regression with binary elements. The element in it is 1 if the simple linear regression of the corresponding dependent and independent variable passed the \code{p.adjust.cutoff}, and 0 if not.}
@@ -26,7 +28,7 @@ Generate an initial Beta matrix with simple linear regression of each dependent 
 \examples{
 
 data(lowD)
-B0 <- initialBeta(lowD$X, lowD$Y, "BH", 0.01)$B0
+B0 <- initialBeta(lowD$X, lowD$Y, "BH", 0.1, ncores=4)$B0
 result <- PgaMsgl(lowD$X, lowD$Y, B0, model="L121", lowD$Gm, lowD$mi, lowD$mg, lowD$mc)
 FitEva_result <- FitEva(lowD$Beta, result$Beta, lowD$Gm, cutoff.sc=0, cutoff.g=0)
 

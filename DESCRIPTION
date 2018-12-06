@@ -7,7 +7,7 @@ Author: Yiming Qin
 Maintainer: Yiming Qin <yimingdan@gmail.com>
 Description: Proximal Gradient Algorithm for Multi-variate Sparse Group Lasso
 License: GPL-3
-Imports: Rcpp, RcppEigen, doParallel, foreach
+Imports: Rcpp, RcppEigen, parallel, doParallel, foreach
 LinkingTo: Rcpp, RcppEigen
 Encoding: UTF-8
 RoxygenNote: 6.1.1

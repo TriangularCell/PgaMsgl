@@ -16,11 +16,13 @@
 #' @examples
 #' 
 #' data(lowD)
-#' B0 <- initialBeta(lowD$X, lowD$Y, "BH", 0.01)$B0
+#' B0 <- initialBeta(lowD$X, lowD$Y, "BH", 0.1, ncores=4)$B0
 #' result <- PgaMsgl(lowD$X, lowD$Y, B0, model="L121", lowD$Gm, lowD$mi, lowD$mg, lowD$mc)
 #' FitEva_result <- FitEva(lowD$Beta, result$Beta, lowD$Gm, cutoff.sc=0, cutoff.g=0)
 #' 
 #' @useDynLib PgaMsgl
+#' 
+#' @import doParallel foreach parallel
 #' 
 #' @export
 initialBeta <- function(XX, YY, method=p.adjust.methods, cutoff=p.adjust.cutoff, ncores=ncores)
