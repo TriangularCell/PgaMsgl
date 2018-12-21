@@ -5,7 +5,12 @@ PgaMsgl is an *R* package on Proximal Gradient Algorithm for Multi-variate Spars
 ### Installing
 
 Download the whole package and **Build** within R.
-Later on I will release it on CRAN.
+
+OR
+
+Use install from the *devtools* package and run `install("directory of PgaMsgl", dependencies = TRUE)`
+
+Later on it will be released on CRAN.
 
 ### Running the tests
 
