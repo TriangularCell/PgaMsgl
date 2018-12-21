@@ -56,7 +56,7 @@ FitEva <- function(Beta.simulate, Beta.fit, Gm, cutoff.sc, cutoff.g)
   if(cutoff.g < 0) {
     stop("Please indicate a non-negative cutoff of group norm.")
   }
-  n.g = dim(Gm)[1]
+  n.g = NROW(Gm)
   simulate.g.norm = rep(0,n.g)
   try.g.norm = rep(0,n.g)
   

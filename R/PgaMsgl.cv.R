@@ -69,7 +69,7 @@ PgaMsgl.cv <- function(XX, YY, B0, model=c("L020v1", "L020v2", "L121"), Gm, mi=1
     registerDoParallel(cores=ncores)
   }
   
-  N=dim(XX)[1] # number of samples
+  N=NROW(XX) # number of samples
   mg.v <- sort(mg.v)
   mc.v <- sort(mc.v)
   
@@ -121,7 +121,7 @@ PgaMsgl.cv <- function(XX, YY, B0, model=c("L020v1", "L020v2", "L121"), Gm, mi=1
       }
       beta <- result$Beta
       rss.temp <- norm(as.matrix(X.test%*%beta-Y.test),'F')^2
-      RMSE.temp <- sqrt(rss.temp/(dim(Y.test)[1]*dim(Y.test)[2]))
+      RMSE.temp <- sqrt(rss.temp/(NROW(Y.test)*NCOL(Y.test)))
       Rsquare.temp <- 1-rss.temp/(norm(as.matrix(Y.test-mean(Y.test)),'F'))^2
       list(rss.temp, RMSE.temp, Rsquare.temp)
     }

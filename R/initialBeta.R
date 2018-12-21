@@ -44,8 +44,8 @@ initialBeta <- function(XX, YY, method=p.adjust.methods, cutoff=p.adjust.cutoff,
     return(p)
   }
   
-  dim.r <- dim(XX)[2]
-  dim.c <- dim(YY)[2]
+  dim.r <- NCOL(XX)
+  dim.c <- NCOL(YY)
   
   B0p <- matrix(rep(0,dim.r*dim.c), nrow=dim.r)
   B0b <- matrix(rep(0,dim.r*dim.c), nrow=dim.r)
