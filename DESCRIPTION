@@ -1,8 +1,8 @@
 Package: PgaMsgl
 Type: Package
 Title: Proximal Gradient Algorithm for Multi-variate Sparse Group Lasso
-Version: 1.1
-Date: 2018-08-15
+Version: 1.2
+Date: 2018-12-26
 Author: Yiming Qin
 Maintainer: Yiming Qin <yimingdan@gmail.com>
 Description: Proximal Gradient Algorithm for Multi-variate Sparse Group Lasso
