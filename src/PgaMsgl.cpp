@@ -30,6 +30,7 @@ List L121(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
   const int p(X.cols());
   const int q(Y.cols());
   const int n_g(G_matr.rows());
+  const int n_c=p*q;
   
   MatrixXd beta_old(MatrixXd(p, q).setOnes());
   MatrixXd beta = Beta0;
@@ -50,7 +51,12 @@ List L121(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
     Map<RowVectorXd> zv(z.data(), z.size());
     VectorXd zsort=zv.cwiseAbs();
     std::sort(zsort.data(),zsort.data()+zsort.size(), std::greater<double>());
-    tau(k)=zsort(coe_max)/v;
+    if (coe_max<n_c)
+      {
+      tau(k)=zsort(coe_max)/v;
+      } else {
+        tau(k)=zsort(n_c-1)/v;
+      }
     
     MatrixXd z_b(MatrixXd(p, q).setZero());
     
@@ -79,7 +85,13 @@ List L121(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
     MatrixXd zbsort=z_b_g_norm_grpNormalized;
     Map<RowVectorXd> zbsortv(zbsort.data(), zbsort.size());
     std::sort(zbsortv.data(), zbsortv.data()+zbsortv.size(), std::greater<double>());
-    lambda_grpNormalized(k)=zbsortv(grp_max)/v;
+    if (grp_max < n_g)
+    {
+      lambda_grpNormalized(k)=zbsortv(grp_max)/v;
+    } else {
+      lambda_grpNormalized(k)=zbsortv(n_g-1)/v;
+    }
+    
     
     for (int g=0; g<n_g; g++)
     {
@@ -103,8 +115,8 @@ List L121(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
     rss(k)=pow((X*beta-Y).norm(), 2);
     rss_relative(k)=pow((X*beta-Y).norm(), 2)/pow(Y.norm(), 2);
     
+    k++;
     if ((beta-beta_old).norm()<0.001){break;};
-    k++;   
   }
   return List::create(_["Beta"] = beta,
                       _["Rss"] = rss,
@@ -132,6 +144,7 @@ List L020v1(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
   const int p(X.cols());
   const int q(Y.cols());
   const int n_g(G_matr.rows());
+  const int n_c=p*q;
   
   MatrixXd beta_old(MatrixXd(p, q).setOnes());
   MatrixXd beta = Beta0;
@@ -151,7 +164,13 @@ List L020v1(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
     Map<RowVectorXd> zv(z.data(), z.size());
     VectorXd zsort=zv.cwiseAbs();
     std::sort(zsort.data(),zsort.data()+zsort.size(), std::greater<double>());
-    tau(k)=pow(zsort(coe_max), 2)/(2*v);
+    if (coe_max<n_c)
+    {
+      tau(k)=pow(zsort(coe_max), 2)/(2*v);
+    } else {
+      tau(k)=pow(zsort(n_c-1), 2)/(2*v);
+    }
+    
     
     MatrixXd z_b(MatrixXd(p, q).setZero());
     
@@ -187,7 +206,12 @@ List L020v1(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
     MatrixXd res_sort=res;
     Map<RowVectorXd> res_sortv(res_sort.data(), res_sort.size());
     std::sort(res_sortv.data(), res_sortv.data()+res_sortv.size(), std::greater<double>());
-    lambda(k)=res_sortv(grp_max);
+    if (grp_max < n_g)
+    {
+      lambda(k)=res_sortv(grp_max);
+    } else {
+      lambda(k)=res_sortv(n_g-1);
+    }
     
     for (int g=0; g<n_g; g++)
     {
@@ -210,8 +234,8 @@ List L020v1(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
     rss(k)=pow((X*beta-Y).norm(), 2);
     rss_relative(k)=pow((X*beta-Y).norm(), 2)/pow(Y.norm(), 2);
     
+    k++;
     if ((beta-beta_old).norm()<0.001){break;};
-    k++;   
   }
   return List::create(_["Beta"] = beta,
                       _["Rss"] = rss,
@@ -240,6 +264,7 @@ List L020v2(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc, doubl
   const int p(X.cols());
   const int q(Y.cols());
   const int n_g(G_matr.rows());
+  const int n_c=p*q;
   
   MatrixXd beta_old(MatrixXd(p, q).setOnes());
   MatrixXd beta = Beta0;
@@ -261,7 +286,12 @@ List L020v2(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc, doubl
       Map<RowVectorXd> zv(z.data(), z.size());
       VectorXd zsort=zv.cwiseAbs();
       std::sort(zsort.data(),zsort.data()+zsort.size(), std::greater<double>());
-      tau(k)=pow(zsort(coe_max), 2)/(2*v);
+      if (coe_max<n_c)
+      {
+        tau(k)=pow(zsort(coe_max), 2)/(2*v);
+      } else {
+        tau(k)=pow(zsort(n_c-1), 2)/(2*v);
+      }
     } else {
       if(tau(k-1)>mintau)
       {
@@ -306,7 +336,12 @@ List L020v2(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc, doubl
       MatrixXd res_sort=res;
       Map<RowVectorXd> res_sortv(res_sort.data(), res_sort.size());
       std::sort(res_sortv.data(), res_sortv.data()+res_sortv.size(), std::greater<double>());
-      lambda(k)=res_sortv(grp_max);
+      if (grp_max < n_g)
+      {
+        lambda(k)=res_sortv(grp_max);
+      } else {
+        lambda(k)=res_sortv(n_g-1);
+      }
     } else {
       if(lambda(k-1)>minlambda)
       {
@@ -339,9 +374,9 @@ List L020v2(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc, doubl
     
     rss(k)=pow((X*beta-Y).norm(), 2);
     rss_relative(k)=pow((X*beta-Y).norm(), 2)/pow(Y.norm(), 2);
-    
+
+    k++;
     if ((beta-beta_old).norm()<0.001){break;};
-    k++;   
   }
   return List::create(_["Beta"] = beta,
                       _["Rss"] = rss,
