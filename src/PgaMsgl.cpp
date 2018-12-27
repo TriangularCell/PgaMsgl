@@ -36,7 +36,7 @@ List L121(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
   MatrixXd beta = Beta0;
   double v=pow(X.norm(), -2)*0.5;
   VectorXd tau = VectorXd::Zero(iter_max);
-  VectorXd lambda = VectorXd::Zero(iter_max);
+  // VectorXd lambda = VectorXd::Zero(iter_max);
   VectorXd lambda_grpNormalized = VectorXd::Zero(iter_max);
   VectorXd rss = VectorXd::Zero(iter_max); // resisual sum square
   VectorXd rss_relative = VectorXd::Zero(iter_max); 
@@ -151,7 +151,7 @@ List L020v1(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
   double v=pow(X.norm(), -2)*0.5;
   VectorXd tau = VectorXd::Zero(iter_max);
   VectorXd lambda = VectorXd::Zero(iter_max);
-  VectorXd lambda_grpNormalized = VectorXd::Zero(iter_max);
+  // VectorXd lambda_grpNormalized = VectorXd::Zero(iter_max);
   VectorXd rss = VectorXd::Zero(iter_max); // resisual sum square
   VectorXd rss_relative = VectorXd::Zero(iter_max); 
   
@@ -209,7 +209,7 @@ List L020v1(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
     if (grp_max < n_g)
     {
       lambda(k)=res_sortv(grp_max);
-    } else {
+    } else { 
       lambda(k)=res_sortv(n_g-1);
     }
     
@@ -240,7 +240,7 @@ List L020v1(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc)
   return List::create(_["Beta"] = beta,
                       _["Rss"] = rss,
                       _["Tau"] = tau,
-                      _["Lambda"] = lambda_grpNormalized,
+                      _["Lambda"] = lambda,
                       _["iteration.time"] = k,
                       _["Rss_relative"] = rss_relative);
 }
@@ -271,7 +271,7 @@ List L020v2(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc, doubl
   double v=pow(X.norm(), -2)*0.5;
   VectorXd tau = VectorXd::Zero(iter_max);
   VectorXd lambda = VectorXd::Zero(iter_max);
-  VectorXd lambda_grpNormalized = VectorXd::Zero(iter_max);
+  // VectorXd lambda_grpNormalized = VectorXd::Zero(iter_max);
   VectorXd rss = VectorXd::Zero(iter_max); // resisual sum square
   VectorXd rss_relative = VectorXd::Zero(iter_max); 
   
@@ -381,7 +381,7 @@ List L020v2(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc, doubl
   return List::create(_["Beta"] = beta,
                       _["Rss"] = rss,
                       _["Tau"] = tau,
-                      _["Lambda"] = lambda_grpNormalized,
+                      _["Lambda"] = lambda,
                       _["iteration.time"] = k,
                       _["Rss_relative"] = rss_relative);
 }
