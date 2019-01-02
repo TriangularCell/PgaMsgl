@@ -6,6 +6,61 @@
 
 using namespace Rcpp;
 
+// FPga_L121
+List FPga_L121(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc);
+RcppExport SEXP _PgaMsgl_FPga_L121(SEXP XXSEXP, SEXP YYSEXP, SEXP B0SEXP, SEXP GmSEXP, SEXP miSEXP, SEXP mgSEXP, SEXP mcSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type XX(XXSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type YY(YYSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type B0(B0SEXP);
+    Rcpp::traits::input_parameter< SEXP >::type Gm(GmSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mi(miSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mg(mgSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mc(mcSEXP);
+    rcpp_result_gen = Rcpp::wrap(FPga_L121(XX, YY, B0, Gm, mi, mg, mc));
+    return rcpp_result_gen;
+END_RCPP
+}
+// FPga_L020v1
+List FPga_L020v1(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc);
+RcppExport SEXP _PgaMsgl_FPga_L020v1(SEXP XXSEXP, SEXP YYSEXP, SEXP B0SEXP, SEXP GmSEXP, SEXP miSEXP, SEXP mgSEXP, SEXP mcSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type XX(XXSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type YY(YYSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type B0(B0SEXP);
+    Rcpp::traits::input_parameter< SEXP >::type Gm(GmSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mi(miSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mg(mgSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mc(mcSEXP);
+    rcpp_result_gen = Rcpp::wrap(FPga_L020v1(XX, YY, B0, Gm, mi, mg, mc));
+    return rcpp_result_gen;
+END_RCPP
+}
+// FPga_L020v2
+List FPga_L020v2(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc, double minlambda, double rlambda, double mintau, double rtau);
+RcppExport SEXP _PgaMsgl_FPga_L020v2(SEXP XXSEXP, SEXP YYSEXP, SEXP B0SEXP, SEXP GmSEXP, SEXP miSEXP, SEXP mgSEXP, SEXP mcSEXP, SEXP minlambdaSEXP, SEXP rlambdaSEXP, SEXP mintauSEXP, SEXP rtauSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type XX(XXSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type YY(YYSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type B0(B0SEXP);
+    Rcpp::traits::input_parameter< SEXP >::type Gm(GmSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mi(miSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mg(mgSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mc(mcSEXP);
+    Rcpp::traits::input_parameter< double >::type minlambda(minlambdaSEXP);
+    Rcpp::traits::input_parameter< double >::type rlambda(rlambdaSEXP);
+    Rcpp::traits::input_parameter< double >::type mintau(mintauSEXP);
+    Rcpp::traits::input_parameter< double >::type rtau(rtauSEXP);
+    rcpp_result_gen = Rcpp::wrap(FPga_L020v2(XX, YY, B0, Gm, mi, mg, mc, minlambda, rlambda, mintau, rtau));
+    return rcpp_result_gen;
+END_RCPP
+}
 // L121
 List L121(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc);
 RcppExport SEXP _PgaMsgl_L121(SEXP XXSEXP, SEXP YYSEXP, SEXP B0SEXP, SEXP GmSEXP, SEXP miSEXP, SEXP mgSEXP, SEXP mcSEXP) {
@@ -63,6 +118,9 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_PgaMsgl_FPga_L121", (DL_FUNC) &_PgaMsgl_FPga_L121, 7},
+    {"_PgaMsgl_FPga_L020v1", (DL_FUNC) &_PgaMsgl_FPga_L020v1, 7},
+    {"_PgaMsgl_FPga_L020v2", (DL_FUNC) &_PgaMsgl_FPga_L020v2, 11},
     {"_PgaMsgl_L121", (DL_FUNC) &_PgaMsgl_L121, 7},
     {"_PgaMsgl_L020v1", (DL_FUNC) &_PgaMsgl_L020v1, 7},
     {"_PgaMsgl_L020v2", (DL_FUNC) &_PgaMsgl_L020v2, 11},
