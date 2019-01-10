@@ -2,7 +2,7 @@
 % Please edit documentation in R/PgaMsgl.cv.R
 \name{PgaMsgl.cv}
 \alias{PgaMsgl.cv}
-\title{Cross validation of super-parameters of PgaMsgl}
+\title{Cross validation of hyperparameters of PgaMsgl}
 \usage{
 PgaMsgl.cv(XX, YY, B0, model = c("L020v1", "L020v2", "L121"), Gm, mi = 1000, mg.v, mc.v, minlambda = 1e-5, rlambda = 0.98, mintau = 1e-5, rtau = 0.98, fold = 5, seed = 1, ncores)
 }
@@ -55,7 +55,7 @@ PgaMsgl.cv(XX, YY, B0, model = c("L020v1", "L020v2", "L121"), Gm, mi = 1000, mg.
 \item{mc.v}{A vector of values of the parameter \code{mc} tested.}
 }
 \description{
-Cross validation of super-parameters \code{mg} and \code{mc} of \code{\link{PgaMsgl}}.
+Cross validation of hyperparameters \code{mg} and \code{mc} of \code{\link{PgaMsgl}}.
 }
 \examples{
 data(lowD)
@@ -73,6 +73,20 @@ coe.max.cv.rmse <- result.cv$mc.v[which.min(result.cv$RMSE)]
 
 grp.max.cv.r2 <- result.cv$mg.v[which.max(result.cv$Rsquare)]
 coe.max.cv.r2 <- result.cv$mc.v[which.max(result.cv$Rsquare)]
+
+OR: One can select hyperparameters following the one standard error rule.
+
+index.minrss <- which.min(result.cv$rss)
+grp.max.cv.rss <- result.cv$mg.v[ min( which( result.cv$rss < result.cv$rss[index.minrss] + result.cv$rss.se[index.minrss] ) ) ]
+coe.max.cv.rss <- result.cv$mc.v[ min( which( result.cv$rss < result.cv$rss[index.minrss] + result.cv$rss.se[index.minrss] ) ) ]
+
+index.minrmse <- which.min(result.cv$RMSE)
+grp.max.cv.rmse <- result.cv$mg.v[ min( which( result.cv$RMSE <= result.cv$RMSE[index.minrmse] + result.cv$RMSE.se[index.minrmse] ) ) ]
+coe.max.cv.rmse <- result.cv$mc.v[ min( which( result.cv$RMSE <= result.cv$RMSE[index.minrmse] + result.cv$RMSE.se[index.minrmse] ) ) ]
+
+index.minr2 <- which.max(result.cv$Rsquare)
+grp.max.cv.r2 <- result.cv$mg.v[ min( which( result.cv$Rsquare >= result.cv$Rsquare[index.minr2] - result.cv$Rsquare.se[index.minr2] ) ) ]
+coe.max.cv.r2 <- result.cv$mc.v[ min( which( result.cv$Rsquare >= result.cv$Rsquare[index.minr2] - result.cv$Rsquare.se[index.minr2] ) ) ]
 
 system.time(try1 <- PgaMsgl(lowD$X, lowD$Y, lowD$B0, model="L121", lowD$Gm, lowD$mi, 10, 120))
 system.time(try2 <- PgaMsgl(lowD$X, lowD$Y, lowD$B0, model="L121", lowD$Gm, lowD$mi, grp.max.cv.rss, coe.max.cv.rss))

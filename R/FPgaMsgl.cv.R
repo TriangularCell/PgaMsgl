@@ -1,6 +1,6 @@
-#' Cross validation of super-parameters of FPgaMsgl
+#' Cross validation of hyperparameters of FPgaMsgl
 #'
-#' Cross validation of super-parameters \code{mg} and \code{mc} of \code{\link{FPgaMsgl}}.
+#' Cross validation of hyperparameters \code{mg} and \code{mc} of \code{\link{FPgaMsgl}}.
 #' 
 #' @usage FPgaMsgl.cv(XX, YY, B0, model = c("L020v1", "L020v2", "L121"), Gm, mi = 1000, mg.v, mc.v, minlambda = 1e-5, rlambda = 0.98, mintau = 1e-5, rtau = 0.98, fold = 5, seed = 1, ncores)
 #' 
@@ -47,6 +47,20 @@
 #' 
 #' grp.max.cv.r2 <- result.cv$mg.v[which.max(result.cv$Rsquare)]
 #' coe.max.cv.r2 <- result.cv$mc.v[which.max(result.cv$Rsquare)]
+#' 
+#' OR: One can select hyperparameters following the one standard error rule.
+#' 
+#' index.minrss <- which.min(result.cv$rss)
+#' grp.max.cv.rss <- result.cv$mg.v[ min( which( result.cv$rss <= result.cv$rss[index.minrss] + result.cv$rss.se[index.minrss] ) ) ]
+#' coe.max.cv.rss <- result.cv$mc.v[ min( which( result.cv$rss <= result.cv$rss[index.minrss] + result.cv$rss.se[index.minrss] ) ) ]
+#' 
+#' index.minrmse <- which.min(result.cv$RMSE)
+#' grp.max.cv.rmse <- result.cv$mg.v[ min( which( result.cv$RMSE <= result.cv$RMSE[index.minrmse] + result.cv$RMSE.se[index.minrmse] ) ) ]
+#' coe.max.cv.rmse <- result.cv$mc.v[ min( which( result.cv$RMSE <= result.cv$RMSE[index.minrmse] + result.cv$RMSE.se[index.minrmse] ) ) ]
+#' 
+#' index.minr2 <- which.max(result.cv$Rsquare)
+#' grp.max.cv.r2 <- result.cv$mg.v[ min( which( result.cv$Rsquare >= result.cv$Rsquare[index.minr2] - result.cv$Rsquare.se[index.minr2] ) ) ]
+#' coe.max.cv.r2 <- result.cv$mc.v[ min( which( result.cv$Rsquare >= result.cv$Rsquare[index.minr2] - result.cv$Rsquare.se[index.minr2] ) ) ]
 #' 
 #' system.time(try1 <- FPgaMsgl(lowD$X, lowD$Y, lowD$B0, model="L121", lowD$Gm, lowD$mi, 10, 120))
 #' system.time(try2 <- FPgaMsgl(lowD$X, lowD$Y, lowD$B0, model="L121", lowD$Gm, lowD$mi, grp.max.cv.rss, coe.max.cv.rss))
@@ -132,5 +146,11 @@ FPgaMsgl.cv <- function(XX, YY, B0, model=c("L020v1", "L020v2", "L121"), Gm, mi=
   rss <- colSums(rss.test)/fold
   RMSE <- colSums(RMSE.test)/fold
   Rsquare <- colSums(Rsquare.test)/fold
-  return(list(rss=rss, RMSE=RMSE, Rsquare=Rsquare, rss.matr = rss.test, RMSE.matr = RMSE.test, Rsquare.matr = Rsquare.test, mg.v=grp.max.all, mc.v=coe.max.all))
+  
+  fun.se <- function(x) sd(x)/sqrt(length(x))
+  rss.se <- apply(rss.test, 2, fun.se)
+  RMSE.se <- apply(RMSE.test, 2, fun.se)
+  Rsquare.se <- apply(Rsquare.test, 2, fun.se)
+  
+  return(list(rss=rss, RMSE=RMSE, Rsquare=Rsquare, rss.se=rss.se, RMSE.se=RMSE.se, Rsquare.se=Rsquare.se, rss.matr = rss.test, RMSE.matr = RMSE.test, Rsquare.matr = Rsquare.test, mg.v=grp.max.all, mc.v=coe.max.all))
 }
