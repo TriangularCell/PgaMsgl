@@ -25,3 +25,11 @@ L020v2 <- function(XX, YY, B0, Gm, mi, mg, mc, minlambda = 1e-5, rlambda = 0.98,
     .Call('_PgaMsgl_L020v2', PACKAGE = 'PgaMsgl', XX, YY, B0, Gm, mi, mg, mc, minlambda, rlambda, mintau, rtau)
 }
 
+L121_test <- function(XX, YY, B0, Gm, mi, mg, mc, Beta, cutoff) {
+    .Call('_PgaMsgl_L121_test', PACKAGE = 'PgaMsgl', XX, YY, B0, Gm, mi, mg, mc, Beta, cutoff)
+}
+
+L020v1_test <- function(XX, YY, B0, Gm, mi, mg, mc, Beta, cutoff) {
+    .Call('_PgaMsgl_L020v1_test', PACKAGE = 'PgaMsgl', XX, YY, B0, Gm, mi, mg, mc, Beta, cutoff)
+}
+

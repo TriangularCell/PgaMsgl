@@ -116,6 +116,44 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// L121_test
+List L121_test(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc, SEXP Beta, SEXP cutoff);
+RcppExport SEXP _PgaMsgl_L121_test(SEXP XXSEXP, SEXP YYSEXP, SEXP B0SEXP, SEXP GmSEXP, SEXP miSEXP, SEXP mgSEXP, SEXP mcSEXP, SEXP BetaSEXP, SEXP cutoffSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type XX(XXSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type YY(YYSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type B0(B0SEXP);
+    Rcpp::traits::input_parameter< SEXP >::type Gm(GmSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mi(miSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mg(mgSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mc(mcSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type Beta(BetaSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type cutoff(cutoffSEXP);
+    rcpp_result_gen = Rcpp::wrap(L121_test(XX, YY, B0, Gm, mi, mg, mc, Beta, cutoff));
+    return rcpp_result_gen;
+END_RCPP
+}
+// L020v1_test
+List L020v1_test(SEXP XX, SEXP YY, SEXP B0, SEXP Gm, SEXP mi, SEXP mg, SEXP mc, SEXP Beta, SEXP cutoff);
+RcppExport SEXP _PgaMsgl_L020v1_test(SEXP XXSEXP, SEXP YYSEXP, SEXP B0SEXP, SEXP GmSEXP, SEXP miSEXP, SEXP mgSEXP, SEXP mcSEXP, SEXP BetaSEXP, SEXP cutoffSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< SEXP >::type XX(XXSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type YY(YYSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type B0(B0SEXP);
+    Rcpp::traits::input_parameter< SEXP >::type Gm(GmSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mi(miSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mg(mgSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type mc(mcSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type Beta(BetaSEXP);
+    Rcpp::traits::input_parameter< SEXP >::type cutoff(cutoffSEXP);
+    rcpp_result_gen = Rcpp::wrap(L020v1_test(XX, YY, B0, Gm, mi, mg, mc, Beta, cutoff));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_PgaMsgl_FPga_L121", (DL_FUNC) &_PgaMsgl_FPga_L121, 7},
@@ -124,6 +162,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_PgaMsgl_L121", (DL_FUNC) &_PgaMsgl_L121, 7},
     {"_PgaMsgl_L020v1", (DL_FUNC) &_PgaMsgl_L020v1, 7},
     {"_PgaMsgl_L020v2", (DL_FUNC) &_PgaMsgl_L020v2, 11},
+    {"_PgaMsgl_L121_test", (DL_FUNC) &_PgaMsgl_L121_test, 9},
+    {"_PgaMsgl_L020v1_test", (DL_FUNC) &_PgaMsgl_L020v1_test, 9},
     {NULL, NULL, 0}
 };
 
